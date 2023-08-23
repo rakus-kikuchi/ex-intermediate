@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div th:each="team:${teamDetail}">
+        <h3>球団名</h3>
+        <span th:text="${team.teamName}"></span>
+        <h3>本拠地</h3>
+        <span th:text="${team.headquarters}"></span>
+        <h3>発足</h3>
+        <span th:text="${team.inaugurantion}"></span>
+        <h3>歴史</h3>
+        <span th:utext="${#strings.replace(team.history, '↓', '<br>↓<br>')}"></span>
+
+    </div>
+    <button type="submit" onclick="location.href='list'">戻る</button>
+
+    
+</body>
+</html>
