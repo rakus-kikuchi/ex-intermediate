@@ -10,7 +10,7 @@
 <body>
     <h3>衣類検索</h3>
     <form th:action="@{/clothes/search}">
-            <input type="radio" name="gender" value=0 th:checked="${gender == 0}">Man
+            <input type="radio" name="gender" value=0 th:checked="${gender == 0 or gender == null}">Man
             <br>
             <input type="radio" name="gender" value=1 th:checked="${gender == 1}">Woman
             <br>
@@ -25,7 +25,8 @@
     </form>
 
     <br>
-    <div th:if="${clotheList}" th:each="clothe:${clotheList}">
+    <div th:if="${gender != null} and ${clotheList == null or #lists.isEmpty(clotheList)}">該当するものが見つかりません</div>
+    <div th:each="clothe:${clotheList}">
         <table border="1">
             <tr>
                 <th>ジャンル</th>
