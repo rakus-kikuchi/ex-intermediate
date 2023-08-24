@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>ホテル検索</h3>
+    <form th:action="@{/hotel/hit}">
+        <input type="number" name="price" th:value="${price}">円以下
+        <button>検索</button>
+    </form>
+        <br>
+        <div th:if="${hotelList}" th:each="hotel:${hotelList}">
+            <table border="1">
+                <tr>
+                    <td>ホテル名</td>
+                    <td th:text="${hotel.hotelName}"></td>
+                </tr>
+                <tr>
+                    <td>最寄駅</td>
+                    <td th:text="${hotel.nearestStation}"></td>
+                </tr>
+                <tr>
+                    <td>価格</td>
+                    <td th:text="${hotel.price}"></td>
+                </tr>
+            </table>
+            <br>
+        </div>
+</body>
+</html>
